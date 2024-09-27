@@ -1,0 +1,13 @@
+# GitHub Container Registry as the image repository
+IMAGE_REPOSITORY := ghcr.io/orri-hq
+
+# Generate a unique version using uuidgen (you can change this to your preferred versioning scheme)
+VERSION := $(shell uuidgen)
+
+# Ensure that the COMPONENT is defined in the Makefile
+ifndef COMPONENT
+$(error COMPONENT is undefined)
+endif
+
+# Calculate the image name with the landscape, component, and version tag
+IMAGE_NAME := $(IMAGE_REPOSITORY)/$(COMPONENT):$(VERSION)
